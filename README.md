@@ -1,46 +1,76 @@
-# Getting Started with Create React App
+<h1 align="center">User Management Frontend</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  A responsive React application built with TypeScript for managing user registration, authentication, and administration features. Includes email verification, password reset, role-based access control, and more.
+</p>
 
-## Available Scripts
+<hr />
 
-In the project directory, you can run:
+<h2>🧰 Tech Stack</h2>
+<ul>
+  <li><strong>React</strong> (with TypeScript)</li>
+  <li><strong>Axios</strong> for API requests</li>
+  <li><strong>React Hook Form</strong> for form handling and validation</li>
+  <li><strong>Material UI</strong> for UI components</li>
+  <li><strong>React Router</strong> for routing</li>
+  <li><strong>Responsive Design</strong> using Flexbox/Grid</li>
+</ul>
 
-### `npm start`
+<h2>📦 Folder Structure</h2>
+<pre>
+├── src
+│   ├── components
+│   │   ├── common          // Shared components like Loader, Navbar
+│   │   ├── layout          // Layout-related components
+│   │   ├── forms           // Form components (Login, Register, etc.)
+│   ├── context             // Global context providers
+│   ├── hooks               // Custom React hooks
+│   ├── pages               // Page-level components (Login, Dashboard, Profile)
+│   ├── services            // Axios API services
+│   ├── utils               // Utility functions (token handlers, constants)
+│   ├── App.tsx
+│   ├── main.tsx
+</pre>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<h2>🚀 Getting Started</h2>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<h3>1. Clone the Repository</h3>
+<pre><code>git clone https://github.com/bharti-cmyk/user-mgmt-frontend.git
+cd user-mgmt-frontend</code></pre>
 
-### `npm test`
+<h3>2. Install Dependencies</h3>
+<pre><code>npm install</code></pre>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<h3>3. Create <code>.env</code> File</h3>
 
-### `npm run build`
+<h3>4. Run the App</h3>
+<pre><code>npm start</code></pre>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p>The app will be available at <code>http://localhost:3000</code></p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h2>🧪 Features Implemented</h2>
+<ul>
+  <li>User registration with email verification</li>
+  <li>Login with JWT and refresh token</li>
+  <li>Role-based access (Admin/User)</li>
+  <li>Upload and preview avatar during registration/edit</li>
+  <li>Reset password via email</li>
+  <li>Admin user listing with search, sort, pagination</li>
+  <li>Edit/delete user (admin only)</li>
+  <li>Profile page with edit support</li>
+  <li>Global toast notifications and error handling</li>
+</ul>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h2>🎨 Responsive Design</h2>
+<p>App supports mobile, tablet, and desktop breakpoints using Material UI's responsive layout system.</p>
 
-### `npm run eject`
+<h2>📄 License</h2>
+<p>MIT</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<h2>🔗 Backend Repository</h2>
+<p>
+  See the backend repo: 
+  <a href="https://github.com/bharti-cmyk/user-mgmt-backend" target="_blank">
+    user-mgmt-backend
+  </a>
+</p>
