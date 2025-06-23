@@ -22,6 +22,7 @@ import {
 } from '@mui/material';
 import Loader from '../components/common/Loader';
 import debounce from 'lodash.debounce';
+import { API_BASE_URL } from '../config';
 
 interface User {
   id: number;
@@ -30,6 +31,7 @@ interface User {
   avatar_url?: string;
   role?: string;
   createdAt?: string;
+  bio: string;
 }
 
 const UsersList: React.FC = () => {
@@ -46,7 +48,7 @@ const UsersList: React.FC = () => {
 
   const [editUser, setEditUser] = useState<User | null>(null);
   const [editUsername, setEditUsername] = useState('');
-  const [editEmail, setEditEmail] = useState('');
+  const [editBio, setEditBio] = useState('');
   const [editAvatar, setEditAvatar] = useState<File | null>(null);
 
   const [toast, setToast] = useState<{ open: boolean; message: string; severity: 'success' | 'error' }>({
@@ -102,7 +104,7 @@ const UsersList: React.FC = () => {
       fetchUsers();
     } catch (err) {
       console.error('Error deleting user:', err);
-      setToast({ open: true, message: 'Error deleting user.', severity: 'error' });
+      setToast({ open: true, message: 'You are not authorized to delete any user.', severity: 'error' });
     }
   };
 
@@ -112,7 +114,7 @@ const UsersList: React.FC = () => {
     try {
       const formData = new FormData();
       formData.append('username', editUsername);
-      formData.append('email', editEmail);
+      formData.append('bio', editBio);
       if (editAvatar) {
         formData.append('avatar', editAvatar);
       }
@@ -128,7 +130,7 @@ const UsersList: React.FC = () => {
       setToast({ open: true, message: 'User updated successfully.', severity: 'success' });
     } catch (err) {
       console.error('Error updating user:', err);
-      setToast({ open: true, message: 'Error updating user.', severity: 'error' });
+      setToast({ open: true, message: 'You are not authorized to update any user.', severity: 'error' });
     }
   };
 
@@ -190,7 +192,7 @@ const UsersList: React.FC = () => {
                   <Avatar
                     src={
                       user.avatar_url
-                        ? `http://localhost:4000${user.avatar_url}?v=${Date.now()}`
+                        ? `${API_BASE_URL}${user.avatar_url}?v=${Date.now()}`
                         : 'https://via.placeholder.com/50'
                     }
                     sx={{ width: 50, height: 50 }}
@@ -233,7 +235,7 @@ const UsersList: React.FC = () => {
                       onClick={() => {
                         setEditUser(user);
                         setEditUsername(user.username);
-                        setEditEmail(user.email);
+                        setEditBio(user.bio);
                         setEditAvatar(null);
                       }}
                     >
@@ -269,11 +271,11 @@ const UsersList: React.FC = () => {
             onChange={(e) => setEditUsername(e.target.value)}
           />
           <TextField
-            label="Email"
+            label="Bio"
             fullWidth
             margin="dense"
-            value={editEmail}
-            onChange={(e) => setEditEmail(e.target.value)}
+            value={editBio}
+            onChange={(e) => setEditBio(e.target.value)}
           />
           <Button variant="outlined" component="label" sx={{ mt: 2 }}>
             Upload Avatar

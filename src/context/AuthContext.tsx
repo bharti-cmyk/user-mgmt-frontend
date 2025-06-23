@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// ✅ Add this hook to safely consume the context
+
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {

@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 let accessToken = localStorage.getItem('accessToken'); // keep in memory ideally
 
 const api = axios.create({
-  baseURL: 'http://localhost:4000/api',
+  baseURL: `${API_BASE_URL}/api`,
   withCredentials: true, // needed for cookies (refreshToken)
 });
 
@@ -29,8 +30,13 @@ api.interceptors.response.use(
         const refreshToken = localStorage.getItem('refreshToken');
 
         const res = await axios.post(
-          'http://localhost:4000/api/auth/refresh-token',
-          { refreshToken }
+          `${API_BASE_URL}/api/auth/refresh-token`,
+          {},
+          {
+            headers: {
+              'x-refresh-token': refreshToken, // 👈 header
+            },
+          }
         );
 
         accessToken = res.data.accessToken;

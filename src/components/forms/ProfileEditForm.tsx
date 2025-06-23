@@ -8,6 +8,7 @@ import {
   TextField,
   Stack,
 } from '@mui/material';
+import { API_BASE_URL } from '../../config';
 
 interface ProfileEditFormProps {
   initialData: {
@@ -44,7 +45,7 @@ const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
         username: initialData.username || '',
         bio: initialData.bio || '',
       });
-      setAvatarPreview(`http://localhost:4000${initialData.avatarUrl}` || '');
+      setAvatarPreview(`${API_BASE_URL}${initialData.avatarUrl}` || '');
     }
   }, [initialData, reset]);
 
@@ -78,7 +79,7 @@ const ProfileEditForm: React.FC<ProfileEditFormProps> = ({
             avatarPreview
               ? avatarPreview
               : initialData.avatarUrl
-                ? `http://localhost:4000${initialData.avatarUrl}`
+                ? `${API_BASE_URL}${initialData.avatarUrl}`
                 : 'https://via.placeholder.com/80'
           }
 

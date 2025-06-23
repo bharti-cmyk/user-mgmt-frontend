@@ -13,6 +13,7 @@ import {
   Divider,
   Chip,
 } from '@mui/material';
+import { API_BASE_URL } from '../config';
 
 interface User {
   id: number;
@@ -47,7 +48,7 @@ const Profile = () => {
       <Paper elevation={3} sx={{ mt: 8, p: 4 }}>
         <Box display="flex" alignItems="center" mb={3}>
           <Avatar
-            src={`http://localhost:4000${user.avatar_url}` || 'https://via.placeholder.com/150'}
+            src={`${API_BASE_URL}${user.avatar_url}` || 'https://via.placeholder.com/150'}
             sx={{ width: 80, height: 80, mr: 3 }}
           />
           <Box>
